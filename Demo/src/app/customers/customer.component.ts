@@ -17,17 +17,10 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
     this.customerForm = this.fb.group({
       firstName: '',
-      lastName: '',
-      email: '',
+      lastName: {value: '', disabled: false},
+      email: [{value: '', disabled: false}],
       sendCatalog: false
     });
-
-    // this.customerForm = new FormGroup({
-    //   firstName: new FormControl(),
-    //   lastName: new FormControl(),
-    //   email: new FormControl(),
-    //   sendCatalog: new FormControl(true)
-    // });
   }
 
   save(): void {
