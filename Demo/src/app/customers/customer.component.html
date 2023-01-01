@@ -206,8 +206,8 @@
           <button class="btn btn-primary mr-3"
                   type="submit"
                   style="width:80px"
-                  [title]="signupForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!signupForm.valid">
+                  [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!customerForm.valid">
             Save
           </button>
         </div>
@@ -215,7 +215,7 @@
     </form>
   </div>
 </div>
-<br>Dirty: {{ signupForm.dirty }}
-<br>Touched: {{ signupForm.touched }}
-<br>Valid: {{ signupForm.valid }}
-<br>Value: {{ signupForm.value | json }}
+<br>Dirty: {{ customerForm.dirty }}
+<br>Touched: {{ customerForm.touched }}
+<br>Valid: {{ customerForm.valid }}
+<br>Value: {{ customerForm.value | json }}
