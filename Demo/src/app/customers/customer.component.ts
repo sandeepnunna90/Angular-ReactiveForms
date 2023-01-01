@@ -3,7 +3,24 @@ import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl, Valid
 
 import { Customer } from './customer';
 
+//cross-field Custom Validator
+function emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
+  const emailControl = c.get('email');
+  const confirmEmailControl = c.get('confirmEmail');
 
+  if (emailControl.pristine || confirmEmailControl.pristine) {
+    return null;
+  }
+
+  if (emailControl.value === confirmEmailControl.value) {
+    return null;
+  }
+
+  return { 'match': true };
+}
+
+
+// custome validator with parameters
 function ratingRange(min: number, max: number): ValidatorFn {
   return (c: AbstractControl): { [key: string]: boolean } | null => {
       if (c.value !== null && (isNaN(c.value)) || c.value < min  || c.value > max) {
@@ -39,7 +56,7 @@ export class CustomerComponent implements OnInit {
       emailGroup: this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         confirmEmail: ['', [Validators.required]]
-      }),
+      }, { validator: emailMatcher }),
       phone: '',
       notification: 'email',
       rating: [null, ratingRange(1, 5)],
