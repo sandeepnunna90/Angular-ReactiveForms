@@ -3,13 +3,22 @@ import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from
 
 import { Customer } from './customer';
 
-// TypeScript Array function syntax - custom validator function
-const ratingRange = (c: AbstractControl): { [key: string]: boolean } | null => {
+
+// custom validator function
+function ratingRange(c: AbstractControl): { [key: string]: boolean } | null {
   if (c.value !== null && (isNaN(c.value)) || c.value < 1  || c.value > 5) {
     return { 'range': true };
   }
   return null;
 }
+
+// TypeScript Array function syntax - custom validator function
+// const ratingRangeArrowFn = (c: AbstractControl): { [key: string]: boolean } | null => {
+//   if (c.value !== null && (isNaN(c.value)) || c.value < 1  || c.value > 5) {
+//     return { 'range': true };
+//   }
+//   return null;
+// }
 
 @Component({
   selector: 'app-customer',
