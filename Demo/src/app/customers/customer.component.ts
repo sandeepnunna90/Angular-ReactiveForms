@@ -16,9 +16,9 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerForm = this.fb.group({
-      firstName: '',
-      lastName: {value: '', disabled: false},
-      email: [{value: '', disabled: false}],
+      firstName: '', // default value syntax
+      lastName: { value: '', disabled: false }, //object syntax
+      email: [{ value: '', disabled: false }], //array syntax - need to use this if validators are needed for this formControl
       sendCatalog: false
     });
   }
