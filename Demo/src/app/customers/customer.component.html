@@ -5,8 +5,8 @@
 
   <div class="card-body">
     <form novalidate
-          (ngSubmit)="save(signupForm)"
-          #signupForm="ngForm">
+          (ngSubmit)="save()"
+          [formGroup]="customerForm">
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
